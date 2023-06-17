@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="landing-image">
-        <img src="{{ asset('images/landing-image.jpg') }}" alt="Landing Image">
-    </div>
-
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <div class="landing-container">
