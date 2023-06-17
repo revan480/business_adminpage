@@ -4,15 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnsToCustomersTable extends Migration
+class CreateCustomersTable extends Migration
 {
     public function up()
     {
-        Schema::table('customers', function (Blueprint $table) {
-            $table->string('id')->nullable();
-            $table->string('name')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->date('date')->nullable();
+        Schema::create('customers', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('phone_number');
+            $table->date('date');
             $table->string('area')->nullable();
             $table->string('price')->nullable();
             $table->string('payment_type')->nullable();
@@ -22,8 +22,6 @@ class AddColumnsToCustomersTable extends Migration
 
     public function down()
     {
-        Schema::table('customers', function (Blueprint $table) {
-            $table->dropColumn(['id', 'name', 'phone_number', 'date', 'area', 'price', 'payment_type', 'created_at', 'updated_at']);
-        });
+        Schema::dropIfExists('customers');
     }
 }
