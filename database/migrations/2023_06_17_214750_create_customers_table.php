@@ -4,25 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomersTable extends Migration
+class AddColumnsToCustomersTable extends Migration
 {
     public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            // Add other existing columns
-
-            // Add the new column
+        Schema::table('customers', function (Blueprint $table) {
+            $table->string('area')->nullable();
             $table->string('price')->nullable();
-
-            $table->timestamps();
+            $table->string('payment_type')->nullable();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('customers');
+        Schema::table('customers', function (Blueprint $table) {
+            $table->dropColumn(['area', 'price', 'payment_type']);
+        });
     }
 }
+
