@@ -90,7 +90,7 @@
                 let phoneNumber = $(this).data('phoneNumber');
                 let row = $(this).data('row');
                 $('#confirmationModal').modal('hide');
-                window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}`, '_blank');
+                window.open(`https://wa.me/994${phoneNumber}`, '_blank');
                 row.find('td:last').html('<span class="text-success">Message Sent</span>');
             });
         });
