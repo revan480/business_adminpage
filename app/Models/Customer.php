@@ -16,5 +16,6 @@ class Customer extends Model
         'area',
         'price',
         'payment_type',
+        'session_type',
     ];
 }

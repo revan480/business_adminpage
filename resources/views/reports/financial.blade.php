@@ -9,35 +9,39 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1>Financial Report</h1>
+            <h1>Maliyyə hesabatı</h1>
         </div>
         <div class="card-body">
             <div class="report-summary">
                 <div class="summary-item">
-                    <h3>Total Payments</h3>
+                    <h3>Ümumi ödənişlər</h3>
                     <p id="totalPayments">${{ $totalPayments }}</p>
                 </div>
                 <div class="summary-item">
-                    <h3>Total Expenses</h3>
+                    <h3>Ümumi Xərclər</h3>
                     <p id="totalExpenses">${{ $totalExpenses }}</p>
                 </div>
                 <div class="summary-item">
-                    <h3>Difference</h3>
+                    <h3>Ümumi Gəlir</h3>
                     <p id="difference">${{ $difference }}</p>
+                </div>
+                <div class="summary-item">
+                    <h3>Korreksiya/Seans (%)</h3>
+                    <p id="correctionPercentage">{{ $correctionPercentage }}%</p>
                 </div>
             </div>
             <div class="filter-container">
     <form id="filterForm" method="POST" action="{{ route('reports.financialReport') }}">
         @csrf
         <div class="form-group">
-            <label for="startDate">Start Date</label>
+            <label for="startDate">Başlama Tarixi</label>
             <input type="date" class="form-control" id="startDate" name="start_date" value="{{ $startDate ?? '' }}">
         </div>
         <div class="form-group">
-            <label for="endDate">End Date</label>
+            <label for="endDate">Bitmə Tarixi</label>
             <input type="date" class="form-control" id="endDate" name="end_date" value="{{ $endDate ?? '' }}">
         </div>
-        <button type="submit" class="btn btn-primary">Apply Filters</button>
+        <button type="submit" class="btn btn-primary">Təsdiqlə</button>
     </form>
 </div>
     
@@ -80,14 +84,14 @@ document.getElementById('filterForm').addEventListener('submit', function(event)
                 labels: dailyLabels,
                 datasets: [
                     {
-                        label: 'Daily Income',
+                        label: 'Günlük Ödənişlər',
                         data: dailyIncome,
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
                     },
                     {
-                        label: 'Daily Expenses',
+                        label: 'Günlük Xərclər',
                         data: dailyExpenses,
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         borderColor: 'rgba(255, 99, 132, 1)',

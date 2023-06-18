@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a href="{{ route('customers.index') }}" class="navbar-brand">Laser Hair Removal</a>
+                <a href="{{ route('customers.index') }}" class="navbar-brand">Kişi Lazer Elmler</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,13 +20,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="{{ route('customers.index') }}" class="nav-link">Customers</a>
+                            <a href="{{ route('customers.index') }}" class="nav-link">Müştərilər</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('expenses.index') }}" class="nav-link">Expenses</a>
+                            <a href="{{ route('expenses.index') }}" class="nav-link">Xərclər</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('reports.financial') }}" class="nav-link">Reports</a>
+                            <a href="{{ route('reports.financial') }}" class="nav-link">Analizlər</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('whatsapp') }}" class="nav-link">Whatsapp</a>

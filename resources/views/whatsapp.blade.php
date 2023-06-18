@@ -22,10 +22,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Phone Number</th>
-                    <th>Date</th>
-                    <th>Action</th>
+                    <th>Ad</th>
+                    <th>Telefon Nömrəsi</th>
+                    <th>Tarix</th>
+                    <th>Əməliyyat</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,9 +36,9 @@
                         <td>{{ $customer->date }}</td>
                         <td>
                             @if ($customer->isMessageSent)
-                                <span class="text-success">Message Sent</span>
+                                <span class="text-success">Mesaj Göndərildi</span>
                             @else
-                                <button class="btn btn-primary send-message-btn" data-phone="{{ $customer->phone_number }}">Send WhatsApp Message</button>
+                                <button class="btn btn-primary send-message-btn" data-phone="{{ $customer->phone_number }}">Whatsapp Mesaj Göndər</button>
                             @endif
                         </td>
                     </tr>
@@ -56,17 +56,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                    <h5 class="modal-title" id="confirmationModalLabel">Təsdiq Mesajı</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to send a WhatsApp message?</p>
+                    <p>Whatsapp mesaji göndərməyə əminsiniz?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="confirmSend">Send Message</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">İmtina Et</button>
+                    <button type="button" class="btn btn-primary" id="confirmSend">Mesaj Göndər</button>
                 </div>
             </div>
         </div>

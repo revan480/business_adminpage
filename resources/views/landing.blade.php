@@ -4,9 +4,9 @@
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <div class="landing-container">
-        <h1 class="landing-title">Welcome to Laser Hair Removal Service</h1>
-        <p class="landing-description">Experience the best laser hair removal treatment.</p>
-        <a href="{{ route('customers.index') }}" class="btn btn-primary landing-button">Get Started</a>
+        <h1 class="landing-title">Kişi Lazer Elmler Admin Panel</h1>
+        <p class="landing-description">Admin Panelə giriş</p>
+        <a href="{{ route('customers.index') }}" class="btn btn-primary landing-button">Giriş</a>
     </div>
 @endsection
 

@@ -16,6 +16,7 @@ class CreateCustomersTable extends Migration
             $table->string('area')->nullable();
             $table->string('price')->nullable();
             $table->string('payment_type')->nullable();
+            $table->string('session_type')->nullable();
             $table->timestamps();
         });
     }

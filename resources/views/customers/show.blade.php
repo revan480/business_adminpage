@@ -4,28 +4,32 @@
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <div class="container">
-        <h1>Customer Details</h1>
+        <h1>Müştəri Detalları</h1>
         <table class="table">
             <tbody>
                 <tr>
-                    <th>Name</th>
+                    <th>Ad</th>
                     <td>{{ $customer->name }}</td>
                 </tr>
                 <tr>
-                    <th>Phone Number</th>
+                    <th>Telefon Nömrəsi</th>
                     <td>{{ $customer->phone_number }}</td>
                 </tr>
                 <tr>
-                    <th>Date</th>
+                    <th>Tarix</th>
                     <td>{{ $customer->date }}</td>
                 </tr>
                 <tr>
-                    <th>Area</th>
+                    <th>Nahiyə</th>
                     <td>{{ $customer->area }}</td>
                 </tr>
                 <tr>
-                    <th>Price</th>
+                    <th>Qiymət</th>
                     <td>{{ $customer->price }}</td>
+                </tr>
+                <tr>
+                    <th>Seans Növü</th>
+                    <td>{{ $customer->session_type }}</td>
                 </tr>
             </tbody>
         </table>

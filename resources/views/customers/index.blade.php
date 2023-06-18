@@ -5,38 +5,39 @@
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <div class="container">
-    <h1>Customers</h1>
-    <a href="{{ route('customers.create') }}" class="btn btn-primary mb-3">Add Customer</a>
+    <h1>Müştərilər</h1>
+    <a href="{{ route('customers.create') }}" class="btn btn-primary mb-3">Müştəri Əlavə Et</a>
 
     <div class="filter-container mb-3">
         <form action="{{ route('customers.index') }}" method="GET" class="form-inline">
-            <label for="startDate" class="mr-2">Start Date:</label>
+            <label for="startDate" class="mr-2">Başlama Tarixi:</label>
             <input type="date" class="form-control mr-2" id="startDate" name="start_date" value="{{ $startDate ?? '' }}">
             
-            <label for="endDate" class="mr-2">End Date:</label>
+            <label for="endDate" class="mr-2">Bitmə Tarixi:</label>
             <input type="date" class="form-control mr-2" id="endDate" name="end_date" value="{{ $endDate ?? '' }}">
 
-            <label for="paymentType" class="mr-2">Payment Type:</label>
+            <label for="paymentType" class="mr-2">Ödəniş Növü:</label>
             <select class="form-control mr-2" id="paymentType" name="payment_type">
-                <option value="">All</option>
-                <option value="cash" @if($paymentType === 'cash') selected @endif>Cash</option>
-                <option value="card" @if($paymentType === 'card') selected @endif>Card</option>
+                <option value="">Hamısı</option>
+                <option value="cash" @if($paymentType === 'cash') selected @endif>Nağd</option>
+                <option value="card" @if($paymentType === 'card') selected @endif>Kart</option>
             </select>
 
-            <button type="submit" class="btn btn-primary">Apply</button>
+            <button type="submit" class="btn btn-primary">Təsdiqlə</button>
         </form>
     </div>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Phone Number</th>
-                <th>Date</th>
-                <th>Area</th>
-                <th>Price</th>
-                <th>Payment Type</th>
-                <th>Actions</th>
+                <th>Ad</th>
+                <th>Telefon Nömrəsi</th>
+                <th>Tarix</th>
+                <th>Nahiyə</th>
+                <th>Qiymət</th>
+                <th>Ödəniş Növü</th>
+                <th>Seans Növü</th>
+                <th>Əməliyyat</th>
             </tr>
         </thead>
         <tbody>
@@ -48,13 +49,14 @@
                 <td>{{ $customer->area }}</td>
                 <td>{{ $customer->price }}</td>
                 <td>{{ $customer->payment_type }}</td>
+                <td>{{ $customer->session_type }}</td>
                 <td>
-                    <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-primary">View</a>
-                    <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-secondary">Edit</a>
+                    <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-primary">Bax</a>
+                    <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-secondary">Redaktə Et</a>
                     <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this customer?')">Delete</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this customer?')">Sil</button>
                     </form>
                     
                 </td>
