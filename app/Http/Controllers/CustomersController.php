@@ -48,7 +48,7 @@ class CustomersController extends Controller
         $query = Customer::query();
 
         // Filter by date (30 days or more in the past)
-        $query->where('date', '<=', Carbon::now()->subDays(30));
+        $query->where('date', '<=', Carbon::now()->subDays(24));
 
         // Apply additional filters if provided
         if ($request->has('date')) {
