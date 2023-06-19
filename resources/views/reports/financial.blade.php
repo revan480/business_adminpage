@@ -113,28 +113,30 @@ document.getElementById('filterForm').addEventListener('submit', function(event)
     }
 
     document.getElementById('filterForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var startDate = document.getElementById('startDate').value;
-        var endDate = document.getElementById('endDate').value;
+    event.preventDefault();
+    var startDate = document.getElementById('startDate').value;
+    var endDate = document.getElementById('endDate').value;
 
-        // Make an AJAX request to the server to get filtered data
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '{{ route("reports.financial") }}?start_date=' + startDate + '&end_date=' + endDate, true);
-        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                document.getElementById('totalPayments').textContent = response.totalPayments;
-                document.getElementById('totalExpenses').textContent = response.totalExpenses;
-                document.getElementById('difference').textContent = response.difference;
-                dailyLabels = response.dailyLabels;
-                dailyIncome = response.dailyIncome;
-                dailyExpenses = response.dailyExpenses;
-                updateChart();
-            }
-        };
-        xhr.send();
-    });
+    // Make an AJAX request to the server to get filtered data
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '{{ route("reports.financialReport") }}', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            document.getElementById('totalPayments').textContent = response.data.totalPayments;
+            document.getElementById('totalExpenses').textContent = response.data.totalExpenses;
+            document.getElementById('difference').textContent = response.data.difference;
+            dailyLabels = response.data.dailyLabels;
+            dailyIncome = response.data.dailyIncome;
+            dailyExpenses = response.data.dailyExpenses;
+            updateChart();
+        }
+    };
+    xhr.send('start_date=' + startDate + '&end_date=' + endDate);
+});
+
+
 
     // Initial chart creation
     updateChart();

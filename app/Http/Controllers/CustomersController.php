@@ -65,25 +65,40 @@ class CustomersController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'phone_number' => 'required',
-            'date' => 'required',
-            'area' => 'required',
-            'price' => 'required',
-            'payment_type' => 'required',
-            'session_type' => 'required|in:Correction,Session',
-        ]);
+{
+    $validatedData = $request->validate([
+        'name' => 'required',
+        'phone_number' => 'required',
+        'date' => 'required|date',
+        'area' => 'required',
+        'price' => 'required',
+        'payment_type' => 'required',
+        'session_type' => 'required|in:Correction,Session',
+    ]);
 
-        if ($validatedData['session_type'] === 'Correction') {
-            $validatedData['price'] = 0;
-        }
-
-        Customer::create($validatedData);
-
-        return redirect()->route('customers.index')->with('success', 'Customer created successfully.');
+    if ($validatedData['session_type'] === 'Correction') {
+        $validatedData['price'] = 0;
     }
+
+    $customer = new Customer();
+    $customer->name = $validatedData['name'];
+    $customer->phone_number = $validatedData['phone_number'];
+    $customer->date = $validatedData['date'];
+    $customer->area = $validatedData['area'];
+    $customer->price = $validatedData['price'];
+    $customer->session_type = $validatedData['session_type'];
+    $customer->payment_type = $validatedData['payment_type'];
+
+    // Set the created_at and updated_at fields to the chosen date and time
+    $chosenDateTime = $validatedData['date'] . ' 00:00:00';
+    $customer->created_at = $chosenDateTime;
+    $customer->updated_at = $chosenDateTime;
+
+    $customer->save();
+
+    return redirect()->route('customers.index')->with('success', 'Customer created successfully.');
+}
+
 
     public function show(Customer $customer)
     {
