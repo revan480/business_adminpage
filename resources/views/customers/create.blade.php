@@ -12,21 +12,22 @@
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="form-group">
-                <label for="phone_number">Telefon Nömrəsi</label>
-                <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                <label for="area">Nahiyə</label>
+                <input type="text" class="form-control" id="area" name="area" required>
             </div>
             <div class="form-group">
                 <label for="date">Tarix</label>
                 <input type="date" class="form-control" id="date" name="date" required>
             </div>
             <div class="form-group">
-                <label for="area">Nahiyə</label>
-                <input type="text" class="form-control" id="area" name="area" required>
+                <label for="phone_number">Telefon Nömrəsi</label>
+                <input type="number" class="form-control" id="phone_number" name="phone_number" required>
             </div>
             <div class="form-group">
                 <label for="price">Qiymət</label>
-                <input type="text" name="price" id="price" class="form-control" required>
+                <input type="number" name="price" id="price" class="form-control" required>
             </div>
+
             <div class="form-group">
                 <label for="session_type">Seans Növü</label>
                 <select name="session_type" id="session_type" class="form-control" required>
