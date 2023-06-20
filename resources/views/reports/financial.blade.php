@@ -29,6 +29,10 @@
                     <h3>Korreksiya/Seans (%)</h3>
                     <p id="correctionPercentage">{{ $correctionPercentage }}%</p>
                 </div>
+                <div class="summary-item">
+                    <h3>Əmək haqqı</h3>
+                    <p id="salary">${{ $totalPayments * 0.2 }}</p>
+                </div>
             </div>
             <div class="filter-container">
     <form id="filterForm" method="POST" action="{{ route('reports.financialReport') }}">
