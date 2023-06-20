@@ -9,23 +9,27 @@
     <a href="{{ route('customers.create') }}" class="btn btn-primary mb-3">Müştəri Əlavə Et</a>
 
     <div class="filter-container mb-3">
-        <form action="{{ route('customers.index') }}" method="GET" class="form-inline">
-            <label for="startDate" class="mr-2">Başlama Tarixi:</label>
-            <input type="date" class="form-control mr-2" id="startDate" name="start_date" value="{{ $startDate ?? '' }}">
-            
-            <label for="endDate" class="mr-2">Bitmə Tarixi:</label>
-            <input type="date" class="form-control mr-2" id="endDate" name="end_date" value="{{ $endDate ?? '' }}">
+    <form action="{{ route('customers.index') }}" method="GET" class="form-inline">
+        <label for="search" class="mr-2">Axtarış:</label>
+        <input type="text" class="form-control mr-2" id="search" name="search" value="{{ $search ?? '' }}" placeholder="Ad və ya Telefon Nömrəsi">
 
-            <label for="paymentType" class="mr-2">Ödəniş Növü:</label>
-            <select class="form-control mr-2" id="paymentType" name="payment_type">
-                <option value="">Hamısı</option>
-                <option value="cash" @if($paymentType === 'cash') selected @endif>Nağd</option>
-                <option value="card" @if($paymentType === 'card') selected @endif>Kart</option>
-            </select>
+        <label for="startDate" class="mr-2">Başlama Tarixi:</label>
+        <input type="date" class="form-control mr-2" id="startDate" name="start_date" value="{{ $startDate ?? '' }}">
+        
+        <label for="endDate" class="mr-2">Bitmə Tarixi:</label>
+        <input type="date" class="form-control mr-2" id="endDate" name="end_date" value="{{ $endDate ?? '' }}">
 
-            <button type="submit" class="btn btn-primary">Təsdiqlə</button>
-        </form>
-    </div>
+        <label for="paymentType" class="mr-2">Ödəniş Növü:</label>
+        <select class="form-control mr-2" id="paymentType" name="payment_type">
+            <option value="">Hamısı</option>
+            <option value="cash" @if($paymentType === 'cash') selected @endif>Nağd</option>
+            <option value="card" @if($paymentType === 'card') selected @endif>Kart</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">Təsdiqlə</button>
+    </form>
+</div>
+
 
     <table class="table">
         <thead>
