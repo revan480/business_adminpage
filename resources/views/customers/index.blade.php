@@ -10,7 +10,7 @@
 
     <div id="price" style="background: linear-gradient(to right, #43cea2, #185a9d); color: white; width: 100%; max-width: 1800px; font-size: 32px; text-align: center; padding: 15px; padding-left: 10px; margin-top: 20px; border-radius: 5px; display: flex; justify-content: center; margin-left: auto; margin-right: auto;">
     @if(isset($totalPrice))
-        Total Price: {{ $totalPrice }}
+        Cəmi: {{ $totalPrice }}
     @endif
 </div>
 
