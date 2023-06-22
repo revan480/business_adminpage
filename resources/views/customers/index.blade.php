@@ -8,6 +8,13 @@
     <h1>Müştərilər</h1>
     <a href="{{ route('customers.create') }}" class="btn btn-primary mb-3">Müştəri Əlavə Et</a>
 
+    <div id="price" style="background: linear-gradient(to right, #43cea2, #185a9d); color: white; width: 100%; max-width: 1800px; font-size: 32px; text-align: center; padding: 15px; padding-left: 10px; margin-top: 20px; border-radius: 5px; display: flex; justify-content: center; margin-left: auto; margin-right: auto;">
+    @if(isset($totalPrice))
+        Total Price: {{ $totalPrice }}
+    @endif
+</div>
+
+    <br>
     <div class="filter-container mb-3">
     <form action="{{ route('customers.index') }}" method="GET" class="form-inline">
         <label for="search" class="mr-2">Axtarış:</label>

@@ -44,9 +44,19 @@ class CustomersController extends Controller
     // Retrieve the paginated customers based on the filters
     $customers = $query->paginate(10)->appends($request->query());
 
-    // Pass the filtered customers and the filter values to the view
-    return view('customers.index', compact('customers', 'startDate', 'endDate', 'paymentType', 'search'));
+    // Calculate the total price for the current page
+    $currentPageTotalPrice = $query->sum('price');
+
+    // Store the current page total price in the session
+    $request->session()->put('totalPrice', $currentPageTotalPrice);
+
+    // Retrieve the total price from the session
+    $totalPrice = $request->session()->get('totalPrice');
+
+    // Pass the filtered customers, filter values, and total price to the view
+    return view('customers.index', compact('customers', 'startDate', 'endDate', 'paymentType', 'search', 'totalPrice'));
 }
+    
 
 
     public function create()
