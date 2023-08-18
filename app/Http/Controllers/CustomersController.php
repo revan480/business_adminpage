@@ -93,14 +93,11 @@ class CustomersController extends Controller
         'phone_number' => 'required',
         'date' => 'required|date',
         'area' => 'required',
-        'price' => 'required',
+        'price' => 'required|numeric',
         'payment_type' => 'required',
-        'session_type' => 'required|in:Correction,Session',
     ]);
 
-    if ($validatedData['session_type'] === 'Correction') {
-        $validatedData['price'] = 0;
-    }
+    $sessionType = $validatedData['price'] == 0 ? 'Correction' : 'Session';
 
     $customer = new Customer();
     $customer->name = $validatedData['name'];
@@ -108,7 +105,7 @@ class CustomersController extends Controller
     $customer->date = $validatedData['date'];
     $customer->area = $validatedData['area'];
     $customer->price = $validatedData['price'];
-    $customer->session_type = $validatedData['session_type'];
+    $customer->session_type = $sessionType;
     $customer->payment_type = $validatedData['payment_type'];
 
     // Set the created_at and updated_at fields to the chosen date and time
@@ -139,14 +136,13 @@ class CustomersController extends Controller
             'phone_number' => 'required',
             'date' => 'required',
             'area' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
             'payment_type' => 'required',
-            'session_type' => 'required|in:Correction,Session',
-        ]);
+                ]);
 
-        if ($validatedData['session_type'] === 'Correction') {
-            $validatedData['price'] = 0;
-        }
+        $sessionType = $validatedData['price'] == 0 ? 'Correction' : 'Session';
+
+        $customer->update(array_merge($validatedData, ['session_type' => $sessionType]));
 
         $customer->update($validatedData);
 

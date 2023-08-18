@@ -27,14 +27,6 @@
                 <label for="price">Qiymət</label>
                 <input type="number" name="price" id="price" class="form-control" required>
             </div>
-
-            <div class="form-group">
-                <label for="session_type">Seans Növü</label>
-                <select name="session_type" id="session_type" class="form-control" required>
-                    <option value="Session">Seans</option>
-                    <option value="Correction">Korreksiya</option>
-                </select>
-            </div>
             <div class="form-group">
                 <label for="payment_type">Ödəniş Növü</label>
                 <select name="payment_type" id="payment_type" class="form-control" required>
